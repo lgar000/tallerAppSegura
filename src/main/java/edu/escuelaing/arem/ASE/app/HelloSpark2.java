@@ -26,14 +26,16 @@ public class HelloSpark2 {
         if(System.getenv("URL") != null){
             return System.getenv("URL");
         }
-        return "https://localhost:5000/local";
+       // return "https://localhost:5000/local";
+        return "https://ec2-3-84-80-112.compute-1.amazonaws.com:5000/local";
     }
 
     static String getKeyStore() {
         if (System.getenv("KEYSTORE") != null) {
             return System.getenv("KEYSTORE");
         }
-        return "credenciales/ecikeystore1.p12";
+        //return "credenciales/ecikeystore1.p12";
+        return "credenciales/aws/ecikeystore3.p12";
     }
 
 
@@ -41,7 +43,8 @@ public class HelloSpark2 {
         if (System.getenv("KEY") != null) {
             return System.getenv("KEY");
         }
-        return "credenciales/ecikeystore.p12";
+        //return "credenciales/ecikeystore.p12";
+        return "credenciales/aws/ecikeystore2.p12";
     }
 
     static String getPasswordKeyStore(){
