@@ -3,7 +3,7 @@ package edu.escuelaing.arem.ASE.app;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class ShaCadena {
+public class EncryptString {
 
     public static String shaPassword(String password) throws NoSuchAlgorithmException {
 
@@ -16,7 +16,6 @@ public class ShaCadena {
             sb.append(String.format("%02x", b));
         }
 
-        System.out.println("sb: "+sb.toString());
         return  sb.toString();
     }
 }

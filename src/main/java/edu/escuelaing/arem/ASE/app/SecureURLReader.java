@@ -1,7 +1,11 @@
 package edu.escuelaing.arem.ASE.app;
 
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.TrustManagerFactory;
 import java.io.*;
-import java.net.*;
+import java.net.URL;
+import java.net.URLConnection;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -12,18 +16,15 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.TrustManagerFactory;
 
-public class URLReader {
+public class SecureURLReader {
 
-    public static void main(String[] args) {
+    public static String secureURL(String url, String file, String password) {
         try {
 
             // Create a file and a password representation
-            File trustStoreFile = new File("credenciales/myTrustStore");
-            char[] trustStorePassword = "1234arep".toCharArray();
+            File trustStoreFile = new File(file);
+            char[] trustStorePassword = password.toCharArray();
 
             // Load the trust store, the default type is "pkcs12", the alternative is "jks"
             KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
@@ -38,7 +39,7 @@ public class URLReader {
 
             //Print the trustManagers returned by the TMF
             //only for debugging
-            for(TrustManager t: tmf.getTrustManagers()){
+            for (TrustManager t : tmf.getTrustManagers()) {
                 System.out.println(t);
             }
 
@@ -48,29 +49,32 @@ public class URLReader {
             SSLContext.setDefault(sslContext);
 
             // We can now read this URL
-            readURL("https://localhost:5000/hello");
+
+            readURL(url);
 
             // This one can't be read because the Java default truststore has been
             // changed.
-            readURL("https://www.google.com");
 
         } catch (KeyStoreException ex) {
-            Logger.getLogger(URLReader.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SecureURLReader.class.getName()).log(Level.SEVERE, null, ex);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(URLReader.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SecureURLReader.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(URLReader.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SecureURLReader.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(URLReader.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SecureURLReader.class.getName()).log(Level.SEVERE, null, ex);
         } catch (CertificateException ex) {
-            Logger.getLogger(URLReader.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SecureURLReader.class.getName()).log(Level.SEVERE, null, ex);
         } catch (KeyManagementException ex) {
-            Logger.getLogger(URLReader.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SecureURLReader.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        return readURL(url);
     }
 
-    public static void readURL(String sitetoread) {
+
+
+    public static String readURL(String sitetoread) {
+        String result = null;
         try {
             // Crea el objeto que representa una URL2
             URL siteURL = new URL(sitetoread);
@@ -101,10 +105,15 @@ public class URLReader {
 
             String inputLine = null;
             while ((inputLine = reader.readLine()) != null) {
+                result = inputLine;
                 System.out.println(inputLine);
             }
+
         } catch (IOException x) {
             System.err.println(x);
         }
+
+        return result;
     }
+
 }

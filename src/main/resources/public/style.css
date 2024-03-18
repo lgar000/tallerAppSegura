@@ -8,16 +8,17 @@
   }
   
   body {
-    background:#b9d6e4;
+    background:#b3d9ec;
+    
   }
   
   form {
     position:relative;
     width:340px;
-    height:200px;
+    height:250px;
     margin:50px auto;
     text-align:center;
-    background:#ecf0f1;
+   background:#ecf0f1;
     padding:40px;
     -webkit-border-radius:6px;
        -moz-border-radius:6px;
@@ -128,7 +129,21 @@
             transition: all .3s ease-in-out;
   }
   
-  .containerLogs{
+  .message{
     display: flex;
     justify-content: center;
+  }
+
+  .pageLogOut{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .buttonLogOut{
+    background-color: #3498db;
+    padding: 15px 25px;
+    text-decoration: none;
+    color: white;
   }
