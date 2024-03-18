@@ -35,6 +35,16 @@ Para compilar y empaquetar, ejecute
 mvn clean install
 ```
 
+Para ejecutar el proyecto abra su IDE y ejecute las clases HelloSpark1 y HelloSpark2 o ubiquese en la carpeta pricipal y ejecute los siguientes comandos, cada uno en una terminal diferente:
+
+```
+java -cp "target/classes;target/dependency/*" edu.escuelaing.arem.ASE.app.HelloSpark1
+```
+
+```
+java -cp "target/classes;target/dependency/*" edu.escuelaing.arem.ASE.app.HelloSpark2
+```
+
 ## Diseño
 
 Teniendo en cuenta los prerrequisitos, los cuales nos indican que se debe tener un acceso seguro desde el navegador, garantizando autenticación y autorización. Se creó la clase HelloSpark1, en la cual se manejan las solicitudes de inicio de sesión, cierre de sesión y en está misma clase se protegen las rutas get, cuyos endpoinds son “local” y “remote”. Esto quiere decir que mediante before((req, res)de spark  se define un filtro que se ejecuta antes de que se puedan manejar otras solicitudes. Mediante este evitamos que el usuario pueda acceder a las rutas get sin antes haber iniciado sesión. Si el usuario trata de  acceder a las rutas get sin iniciar sesión lo redirige a la página de login. Dentro de este before, definimos una lista (protectedRoutes, que contiene la dista de endpoinds protegidos.
@@ -46,6 +56,10 @@ Para garantizar la existencia de dos computadores comunicándose entre ellos, se
 
 ## Pruebas y funcionamiento
 
+Una vez tenga descargado el proyecto y lo haya ejecutado correctamente proceda a ingresar a un navegador, donde deberá ingresar la url: https://localhost:5000/login.html, aquí encontrara un formulario que le pedirá que ingrese su usuario y contraseña. Los usuarios válidos son:
+
+- john, 1234
+- jane, 5678
 
 
 ## Despliegue en AWS
