@@ -27,7 +27,7 @@ public class HelloSpark2 {
             return System.getenv("URL");
         }
        // return "https://localhost:5000/local";
-        return "https://ec2-3-84-80-112.compute-1.amazonaws.com:5000/local";
+        return "https://ec2-35-168-21-137.compute-1.amazonaws.com:5000/local";
     }
 
     static String getKeyStore() {

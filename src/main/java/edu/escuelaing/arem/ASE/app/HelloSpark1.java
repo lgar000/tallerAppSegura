@@ -88,7 +88,7 @@ public class HelloSpark1 {
             return System.getenv("URL");
         }
        // return "https://localhost:5001/local";
-        return "https://ec2-54-86-129-122.compute-1.amazonaws.com:5001/local";
+        return "https://ec2-52-91-70-132.compute-1.amazonaws.com:5001/local";
     }
 
 
