@@ -58,7 +58,7 @@ Si ingresa un usuario valido y envia el formulario vera un mensaje que le indica
 
 En caso de ingresar credenciales de credenciales invalidas, le pedira que vuelva a intentarlo:
 
-![loginInvalido](https://github.com/lgar000/tallerAppSegura/blob/main/Imagenes/loginValido.png)
+![loginInvalido](https://github.com/lgar000/tallerAppSegura/blob/main/Imagenes/loginInvalido.png)
 
 ## Pruebas unitarias
 
