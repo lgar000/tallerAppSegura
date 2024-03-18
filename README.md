@@ -13,7 +13,7 @@ Explique como escalaría su arquitectura de seguridad para incorporar nuevos ser
 - Git
 - Docker
 - AWS
-- 
+  
 ### Instalación
 
 Para hacer uso del proyecto clone el repositorio usando el siguiente comando
@@ -45,15 +45,6 @@ java -cp "target/classes;target/dependency/*" edu.escuelaing.arem.ASE.app.HelloS
 java -cp "target/classes;target/dependency/*" edu.escuelaing.arem.ASE.app.HelloSpark2
 ```
 
-## Diseño
-
-Teniendo en cuenta los prerrequisitos, los cuales nos indican que se debe tener un acceso seguro desde el navegador, garantizando autenticación y autorización. Se creó la clase HelloSpark1, en la cual se manejan las solicitudes de inicio de sesión, cierre de sesión y en está misma clase se protegen las rutas get, cuyos endpoinds son “local” y “remote”. Esto quiere decir que mediante before((req, res)de spark  se define un filtro que se ejecuta antes de que se puedan manejar otras solicitudes. Mediante este evitamos que el usuario pueda acceder a las rutas get sin antes haber iniciado sesión. Si el usuario trata de  acceder a las rutas get sin iniciar sesión lo redirige a la página de login. Dentro de este before, definimos una lista (protectedRoutes, que contiene la dista de endpoinds protegidos.
-
-Como apoyo a la funcionalidad de HelloSpark1, tenemos la clase User que gestiona la autenticación del usuario,  aquí tenemos un HashMap en el que agregamos usuarios de prueba para validar la autenticación. Además contamos con la clase EncryptString
-, mediante la cual encriptamos la contraseña del usuario, para así almacenarla de forma segura.
-
-Para garantizar la existencia de dos computadores comunicándose entre ellos, se define la clase HelloSpark2,  donde configuramos las rutas “local” y “remote”, donde la ruta local devuelve el saludo “Hello Spark 2” y la ruta “remote” realiza una solicitud segura a una URL remota y devuelve la respuesta, esta solicitud a la URl remota es la que correspondiente a la de HelloSpark1. Este mismo funcionamiento también aplica para HelloSpark1, donde la ruta local devuelve el saludo “Hello Spark 1” y la ruta “remote” realiza una solicitud segura a una URL remota y devuelve la respuesta, esta solicitud a la URl remota es la que correspondiente a la de HelloSpark2. Además en ambas clases se configura la seguridad mediante un archivo de almacén de claves y una contraseña.
-
 ## Pruebas y funcionamiento
 
 Una vez tenga descargado el proyecto y lo haya ejecutado correctamente proceda a ingresar a un navegador, donde deberá ingresar la url: https://localhost:5000/login.html, aquí encontrara un formulario que le pedirá que ingrese su usuario y contraseña. Los usuarios válidos son:
@@ -61,10 +52,39 @@ Una vez tenga descargado el proyecto y lo haya ejecutado correctamente proceda a
 - john, 1234
 - jane, 5678
 
+Si ingresa un usuario valido y envia el formulario vera un mensaje que le indica que su inicio de sesión es exitoso:
+
+![loginValido](https://github.com/lgar000/tallerAppSegura/blob/main/Imagenes/loginValido.png)
+
+En caso de ingresar credenciales de credenciales invalidas, le pedira que vuelva a intentarlo:
+
+![loginInvalido](https://github.com/lgar000/tallerAppSegura/blob/main/Imagenes/loginValido.png)
+
+## Pruebas unitarias
+
+Para ejecutar las pruebas unitarias, ejecutelas desde su IDE
+
+![testIDE](https://github.com/lgar000/tallerAppSegura/blob/main/Imagenes/pruebasIDE.png)
+
+O en la terminal, ubiquese en carpeta principal del proyecto y ejecute el comando:
+
+```
+mvn test
+```
+
+![testMvn](https://github.com/lgar000/tallerAppSegura/blob/main/Imagenes/testMvn.png)
+
+## Diseño
+
+Teniendo en cuenta los prerrequisitos, los cuales nos indican que se debe tener un acceso seguro desde el navegador, garantizando autenticación y autorización. Se creó la clase HelloSpark1, en la cual se manejan las solicitudes de inicio de sesión, cierre de sesión y en está misma clase se protegen las rutas get, cuyos endpoinds son “local” y “remote”. Esto quiere decir que mediante before((req, res)de spark  se define un filtro que se ejecuta antes de que se puedan manejar otras solicitudes. Mediante este evitamos que el usuario pueda acceder a las rutas get sin antes haber iniciado sesión. Si el usuario trata de  acceder a las rutas get sin iniciar sesión lo redirige a la página de login. Dentro de este before, definimos una lista (protectedRoutes, que contiene la dista de endpoinds protegidos.
+
+Como apoyo a la funcionalidad de HelloSpark1, tenemos la clase User que gestiona la autenticación del usuario,  aquí tenemos un HashMap en el que agregamos usuarios de prueba para validar la autenticación. Además contamos con la clase EncryptString
+, mediante la cual encriptamos la contraseña del usuario, para así almacenarla de forma segura.
+
+Para garantizar la comunicación entre dos servidores, se define la clase HelloSpark2,  donde configuramos las rutas “local” y “remote”, donde la ruta local devuelve el saludo “Hello Spark 2” y la ruta “remote” realiza una solicitud segura a una URL remota y devuelve la respuesta, esta solicitud a la URl remota es la que correspondiente a la de HelloSpark1. Este mismo funcionamiento también aplica para HelloSpark1, donde la ruta local devuelve el saludo “Hello Spark 1” y la ruta “remote” realiza una solicitud segura a una URL remota y devuelve la respuesta, esta solicitud a la URl remota es la que correspondiente a la de HelloSpark2. Además en ambas clases se configura la seguridad mediante un archivo de almacén de claves y una contraseña.
+
 
 ## Despliegue en AWS
-
-Para verificar el despliegue del taller en en AWS usando EC2 y Docke, puede revisar el siguiente video:
 
 
 
