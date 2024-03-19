@@ -60,6 +60,30 @@ En caso de ingresar credenciales de credenciales invalidas, le pedira que vuelva
 
 ![loginInvalido](https://github.com/lgar000/tallerAppSegura/blob/main/Imagenes/loginInvalido.png)
 
+Tenga en cuenta que si se encuentra en el puerto 5000 y trata de acceder a algunas de las rutas, https://localhost:5000/local o https://localhost:5000/remote, sin antes iniciar sesion, sera redirigido a la página de login. Esto debido a que estas rutas se encuentran protegidas en la clase HelloSpark1.
+
+![redireccion](https://github.com/lgar000/tallerAppSegura/blob/main/Imagenes/intentoDeAccesoLocalSinInicioDeSesi%C3%B3n.png)
+
+Sin embargo una vez ha iniciado sesión con un usuario válido podrá usar las rutas:  https://localhost:5000/local o https://localhost:5000/remote en el navegador y obtener con https://localhost:5000/local, el mensaje Hello Spark 1, este mensaje corresponde al definido en la propia clase:
+
+![spark1local](https://github.com/lgar000/tallerAppSegura/blob/main/Imagenes/spark1local.png)
+
+En cuanto a la petición a la ruta https://localhost:5000/remote, obtendrá el mensaje Hello Spark 2, que corresponde al mensaje remoto obtenido de la clase HelloSpark2:
+
+![spark1local](https://github.com/lgar000/tallerAppSegura/blob/main/Imagenes/spark1remote.png)
+
+Al ingresar la url https://localhost:5001/remote, obtendra el mensaje propio de la clase HelloSpark2:
+
+![spark2local](https://github.com/lgar000/tallerAppSegura/blob/main/Imagenes/spark2local.png)
+
+Adicionalmente si ingresa a la ruta https://localhost:5000/logout.html, encontrara un boton para cerrar sesión. Debido a que si no se cierra la sesión después de que se ha iniciado correctamente, el usuario queda guardado en una sesión de usuario y a pesar de que ingrese un usuario incorrecto en el formulario, la sesión permanecera y le permitira al usuario no valido acceder a las rutas protegidas(https://localhost:5000/local y https://localhost:5000/remote). Así que para evitar este comportamiento al cerrar sesión se invalida la sesión de usuario.
+
+![logOut](https://github.com/lgar000/tallerAppSegura/blob/main/Imagenes/logout.png)
+
+Una vez cierre sesión sera redirigido a la pagina del login:
+
+![redireccionLogout](https://github.com/lgar000/tallerAppSegura/blob/main/Imagenes/redirecci%C3%B3nLogOut.png)
+
 ## Pruebas unitarias
 
 Para ejecutar las pruebas unitarias, ejecutelas desde su IDE
@@ -82,10 +106,6 @@ Como apoyo a la funcionalidad de HelloSpark1, tenemos la clase User que gestiona
 , mediante la cual encriptamos la contraseña del usuario, para así almacenarla de forma segura.
 
 Para garantizar la comunicación entre dos servidores, se define la clase HelloSpark2,  donde configuramos las rutas “local” y “remote”, donde la ruta local devuelve el saludo “Hello Spark 2” y la ruta “remote” realiza una solicitud segura a una URL remota y devuelve la respuesta, esta solicitud a la URl remota es la que correspondiente a la de HelloSpark1. Este mismo funcionamiento también aplica para HelloSpark1, donde la ruta local devuelve el saludo “Hello Spark 1” y la ruta “remote” realiza una solicitud segura a una URL remota y devuelve la respuesta, esta solicitud a la URl remota es la que correspondiente a la de HelloSpark2. Además en ambas clases se configura la seguridad mediante un archivo de almacén de claves y una contraseña.
-
-
-## Despliegue en AWS
-
 
 
 ## Construido Con
