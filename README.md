@@ -107,6 +107,11 @@ Como apoyo a la funcionalidad de HelloSpark1, tenemos la clase User que gestiona
 
 Para garantizar la comunicación entre dos servidores, se define la clase HelloSpark2,  donde configuramos las rutas “local” y “remote”, donde la ruta local devuelve el saludo “Hello Spark 2” y la ruta “remote” realiza una solicitud segura a una URL remota y devuelve la respuesta, esta solicitud a la URl remota es la que correspondiente a la de HelloSpark1. Este mismo funcionamiento también aplica para HelloSpark1, donde la ruta local devuelve el saludo “Hello Spark 1” y la ruta “remote” realiza una solicitud segura a una URL remota y devuelve la respuesta, esta solicitud a la URl remota es la que correspondiente a la de HelloSpark2. Además en ambas clases se configura la seguridad mediante un archivo de almacén de claves y una contraseña.
 
+## Despliegue en AWS
+
+Para verificar el despliegue del taller en en AWS usando EC2, puede revisar el siguiente video:
+
+https://youtu.be/O5yVOkpKN2Y
 
 ## Construido Con
 
@@ -116,7 +121,7 @@ Para garantizar la comunicación entre dos servidores, se define la clase HelloS
 * [Maven](https://maven.apache.org/) - Gestión de dependencias
 * [Intellij](https://www.jetbrains.com/es-es/idea/) - Entorno de desarrollo integrado para el desarrollo de programas informáticos
 * [Git](https://rometools.github.io/rome/) - Sistema de control de versiones distribuido
-* [Docker](https://www.docker.com/) - Docker es una plataforma de código abierto diseñada para facilitar la creación, implementación y ejecución de aplicaciones en contenedores
+* [AWS](https://aws.amazon.com/es/free/?gclid=CjwKCAjw7-SvBhB6EiwAwYdCAdFmvp0VJz5wsQZcg5anEFJtzJJ2dfpVsGlht9X5DSyRY3Cz7u0B-RoC6ewQAvD_BwE&trk=8fa18207-f2c2-4587-81a1-f2a3648571b3&sc_channel=ps&ef_id=CjwKCAjw7-SvBhB6EiwAwYdCAdFmvp0VJz5wsQZcg5anEFJtzJJ2dfpVsGlht9X5DSyRY3Cz7u0B-RoC6ewQAvD_BwE:G:s&s_kwcid=AL!4422!3!647999789202!e!!g!!amazon%20web%20services!19685287144!146461596856) - Es una colección de servicios de computación en la nube pública que en conjunto forman una plataforma de computación en la nube, ofrecidas a través de Internet por Amazon.com
 
 ## Autor
 
