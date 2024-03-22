@@ -110,6 +110,19 @@ Para garantizar la comunicación entre dos servidores, se define la clase HelloS
 Finalmente tenemos la clase SecureURLReader en la cual se configura la conexión SSL para asegurar la comunicación. Está tiene el método secureURL
 que toma tres parámetros: la URL a la que se desea conectar, la ruta del archivo que contiene el almacén de confianza y la contraseña para acceder al truststore. Por otro lado se tiene el método readURL(String sitetoread) que lee el contenido de la URL como parámetro y lo retorna en una cadena. 
 
+Diagama de arquitectura:
+
+![diagrama](https://github.com/lgar000/tallerAppSegura/blob/main/Imagenes/diagramaTaller7.png)
+
+## Escalar la  arquitectura de seguridad para nuevos servicios
+
+En caso de que se quiera agregar un nuevo servicio se debe proceder a crear un par de llaves y generar los certificados y modificar la aplicación para que use los certificados. Tal y como se hizo con HelloSpark1 y HelloSpark2, donde cada uno tiene uno tiene su propio par de llaves y sus certificados. Esto se considera una buena práctica ya que permite un mejor control de acceso, y en caso de que se requieran revocar un certificado o uno de estos se vea comprometido solo afectará a este servicio en particular, mientras que los demás servicios permanecerán seguros.
+
+Otra manera de escalar la arquitectura de seguridad para los servicios sería configurar o implementar políticas de seguridad específicas para cada uno, como tiempos de vida del certificado y métodos de autenticación, según las necesidades y requisitos de los servicios.
+
+Algo adicional que se podría hacer es la creación de sesión compartida para algunos servicios que requieran que el usuario esté autenticado o haya iniciado sesión ya que por el momento tenemos las rutas de HelloSpark1 protegidas pero a las rutas de HelloSpark2 se puede acceder sin necesidad de iniciar sesión, esto se podría tener en cuenta para servicios especiales para usuarios. Por otro lado, también se puede tener en cuenta la creación de roles para los usuarios, lo que nos permitirá definir permisos asociados a cada rol. Teniendo así control de las acciones que los usuario pueden realizar o los recursos o funcionalidades a los que pueden acceder.
+
+
 ## Despliegue en AWS
 
 Para verificar el despliegue del taller en en AWS usando EC2, puede revisar el siguiente video:
