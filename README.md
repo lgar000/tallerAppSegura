@@ -11,7 +11,6 @@ Explique como escalaría su arquitectura de seguridad para incorporar nuevos ser
 - Java
 - Maven
 - Git
-- Docker
 - AWS
   
 ### Instalación
