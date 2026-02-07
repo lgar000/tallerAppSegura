@@ -122,11 +122,7 @@ Otra manera de escalar la arquitectura de seguridad para los servicios sería co
 Algo adicional que se podría hacer es la creación de sesión compartida para algunos servicios que requieran que el usuario esté autenticado o haya iniciado sesión ya que por el momento tenemos las rutas de HelloSpark1 estan protegidas pero a las rutas de HelloSpark2 se puede acceder sin necesidad de iniciar sesión, esto se podría tener en cuenta para servicios especiales para usuarios. Por otro lado, también se puede tener en cuenta la creación de roles para los usuarios, lo que nos permitirá definir permisos asociados a cada rol. Teniendo así control de las acciones que los usuario pueden realizar o los recursos o funcionalidades a los que pueden acceder.
 
 
-## Despliegue en AWS
 
-Para verificar el despliegue del taller en en AWS usando EC2, puede revisar el siguiente video:
-
-https://youtu.be/O5yVOkpKN2Y
 
 ## Construido Con
 
